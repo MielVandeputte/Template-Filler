@@ -9,28 +9,30 @@
 
   </form>
 
-  <form>
+  <form [formGroup]="changeSetForm">
     <label>
       Name
-      <input />
+      <input formControlName="name" />
     </label>
 
     <label>
       Ticket
-      <input />
+      <input formControlName="ticket" />
     </label>
+  </form>
 
-    <br/>
-
+  <form [formGroup]="dynamicInputsForm">
     @for (input of inputs; track input) {
       <label>{{ input }}
-        <input [id]="input" required />
+        <input required [formControlName]="input" />
       </label>
       <br/>
     }
 
     <button type="submit">Download</button>
   </form>
+
+  <textarea readonly>{{ result }}</textarea>
 </main>
 
 <router-outlet></router-outlet>
